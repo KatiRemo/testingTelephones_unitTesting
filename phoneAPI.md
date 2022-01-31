@@ -4,7 +4,7 @@
 
 Data will be in a json file
 
-### phones.son
+### phones.json
 
 ```json
 [
