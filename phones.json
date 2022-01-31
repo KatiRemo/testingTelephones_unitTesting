@@ -1,0 +1,20 @@
+[
+    {
+        "firstname": "Sheldon",
+        "lastname": "Cooper",
+        "phone": [
+            {"type": "home", "number":"818979934"},
+            {"type": "work", "number":"747347767"},
+            {"type": "cell", "number":"019487481"}
+        ]
+    },
+    {
+        "firstname": "Leonard",
+        "lastname": "Hofstadter",
+        "phone": [
+            {"type": "home", "number":"824684920"},
+            {"type": "work", "number":"747678301"},
+            {"type": "cell", "number":"084928482"}
+        ]
+    }
+]
