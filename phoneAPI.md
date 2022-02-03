@@ -14,6 +14,7 @@ Data will be in a json file
     "phone": [
       { "type": "home", "number": "818979934" },
       { "type": "work", "number": "747347767" },
+      { "type": "work", "number": "747983312"},
       { "type": "cell", "number": "019487481" }
     ]
   },
@@ -31,7 +32,7 @@ Data will be in a json file
 
 ## Class PhoneRegister
 
-Persons are uniquely identified by firstname and lastname. There can't be two persons with the same name.
+Persons are uniquely identified by firstname and lastname. There can't be two persons with the same name. Phone numbers are also unique.
 
 ## **constructor(data)**
 
@@ -58,7 +59,7 @@ If at least one parameter is missing an exception `'parameter missing'` is throw
 For example Sheldon Cooper and work:
 
 ```js
-["747347767"];
+["747347767"], ["747983312"];
 ```
 
 ## **getAllNumbersByType(type)**
@@ -110,7 +111,7 @@ The phone object in phone array is of form:
 ```
 
 If a person has no phone (the phone field is an empty array or there is no phone field), then this person is not added into the result array.
-If all phones are missing, an empty array [] is returned.
+If all phones are missing or phones array is empty, an empty array [] is returned.
 If all persons are missing, an empty array [] is returned.
 
 ## **getName(number)**
