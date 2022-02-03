@@ -1,0 +1,47 @@
+{
+    "test2":[
+        {
+          "firstname": "Sheldon",
+          "lastname": "Cooper",
+          "phone": [
+            { "type": "work", "number": "747347767" },
+            { "type": "work", "number": "747983312" }
+          ]
+        }
+      ],
+      "test3":[],
+      "test4":[
+        {
+          "firstname": "Sheldon",
+          "lastname": "Cooper"
+        },
+        {
+          "firstname": "Leonard",
+          "lastname": "Hofstadter"
+        }
+      ],
+      "test5":[
+        {
+            "firstname": "Sheldon",
+            "lastname": "Cooper",
+            "phone": []
+        },
+        {
+            "firstname": "Leonard",
+            "lastname": "Hofstadter",
+            "phone": []
+        }
+    ],
+    "test6":[
+        {
+          "firstname": "Sheldon",
+          "lastname": "Cooper",
+          "phone": [
+            { "type": "home", "number": "818979934" },
+            { "type": "", "number": "747347767" },
+            { "type": null, "number": "747983312" },
+            { "number": "019487481" }
+          ]
+        }
+      ]
+}
