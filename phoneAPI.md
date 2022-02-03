@@ -55,7 +55,7 @@ Method returns an array of phone numbers of the given `type` belonging to given 
 
 If no person with given name is found, an empty array [] is returned.
 If no number with given type is found, an empty array [] is returned.
-If at least one parameter is missing an exception `'parameter missing'` is thrown.
+If at least one parameter is missing an exception `'missing parameter'` is thrown.
 
 For example Sheldon Cooper and work:
 
@@ -69,7 +69,7 @@ Returns an array of objects consisting of names and numbers of given type. If no
 
 If a person has multiple numbers of the same type, each of them will be in it's own object.
 
-If a parameter `type` is missing, an exception `'parameter missing'` is thrown.
+If a parameter `type` is missing, an exception `'missing parameter '` is thrown.
 
 The format of the returned array of object is:
 

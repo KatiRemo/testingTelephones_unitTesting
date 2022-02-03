@@ -105,7 +105,7 @@ describe('testing method getTypes test.each version', () => {
 
     const testValues = [
         //a             expected
-        ['test2', testData.test2,["work"]],
+        ['test2',testData.test2,["work"]],
         ['test3',testData.test3, []],
         ['test4',testData.test4, []],
     ];
