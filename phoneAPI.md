@@ -40,7 +40,7 @@ Phones json array is passed as a paramater `data`. If the parameter is missing, 
 
 ## **getTypes()**
 
-returns all phone types in an array. Tye type is added to the result array only once. If there are no phones or no persons, an empty array is returned.
+returns all phone types in an array. Tye type is added to the result array only once. If there are no phones or no persons, an empty array [] is returned.
 
 For example:
 
