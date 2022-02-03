@@ -14,7 +14,7 @@ describe('Testing constructor', ()=>{
     });
 });
 
-describe ('Testing method getType', () => {
+describe ('Testing method getTypes', () => {
 
     test ('Test 1: use default data', () => {
         const register = new PhoneRegister(phones);
@@ -23,12 +23,12 @@ describe ('Testing method getType', () => {
         //toEqual when it's array/object toBe will be the same. Check jest documentation
     });
 
-    test ('Test 2: with custom data', () => {
+    test ('Test 2: use custom data', () => {
         const testData = [
             {
               "firstname": "Sheldon",
               "lastname": "Cooper",
-              "phone": [
+              "phones": [
                 { "type": "work", "number": "747347767" },
                 { "type": "work", "number": "747983312" }
               ]
@@ -59,17 +59,17 @@ describe ('Testing method getType', () => {
             expect(register.getTypes()).toEqual([]);
         });
 
-        test('Test 5: phone array is empty', () => {
+        test('Test 5: phones array is empty', () => {
             const testData = [
                 {
                     "firstname": "Sheldon",
                     "lastname": "Cooper",
-                    "phone": []
+                    "phones": []
                 },
                 {
                     "firstname": "Leonard",
                     "lastname": "Hofstadter",
-                    "phone": []
+                    "phones": []
                 }
             ]
             const register = new PhoneRegister(testData);
@@ -82,7 +82,7 @@ describe ('Testing method getType', () => {
             {
               "firstname": "Sheldon",
               "lastname": "Cooper",
-              "phone": [
+              "phones": [
                 { "type": "home", "number": "818979934" },
                 { "type": "", "number": "747347767" },
                 { "type": null, "number": "747983312" },
@@ -93,4 +93,30 @@ describe ('Testing method getType', () => {
           const register = new PhoneRegister(testData);
           expect(register.getTypes()).toEqual(["home"]); 
     });
+});
+
+describe('testing method getTypes test.each version', () => {
+    const testData = require ('../getTypecases.json');
+
+    test('Test 6 version 2', () => {
+        const register = new PhoneRegister(testData.test6);
+          expect(register.getTypes()).toEqual(["home"]); 
+    });
+
+    const testValues = [
+        //a             expected
+        ['test2', testData.test2,["work"]],
+        ['test3',testData.test3, []],
+        ['test4',testData.test4, []],
+    ];
+
+    test.each(testValues)('testing...', (a, expected) => {
+        const register = new PhoneRegister(a);
+        expect(register.getTypes()).toEqual(expected);
+    })
+
+    // test.each(testValues)('testing %s', (text, a, expected) => {
+    //     const register = new PhoneRegister(a);
+    //     expect(register.getTypes()).toEqual(expected); 
+    // });
 });

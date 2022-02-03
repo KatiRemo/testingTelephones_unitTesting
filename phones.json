@@ -2,7 +2,7 @@
     {
         "firstname": "Sheldon",
         "lastname": "Cooper",
-        "phone": [
+        "phones": [
             {"type": "home", "number":"818979934"},
             {"type": "work", "number":"747347767"},
             {"type": "work", "number":"747983312"},
@@ -12,7 +12,7 @@
     {
         "firstname": "Leonard",
         "lastname": "Hofstadter",
-        "phone": [
+        "phones": [
             {"type": "home", "number":"824684920"},
             {"type": "work", "number":"747678301"},
             {"type": "cell", "number":"084928482"}
