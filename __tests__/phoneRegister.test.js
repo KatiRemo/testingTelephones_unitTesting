@@ -89,7 +89,7 @@ describe ('Testing method getTypes', () => {
                 { "number": "019487481" }
               ]
             }
-          ]
+          ];
           const register = new PhoneRegister(testData);
           expect(register.getTypes()).toEqual(["home"]); 
     });
@@ -105,9 +105,9 @@ describe('testing method getTypes test.each version', () => {
 
     const testValues = [
         //a             expected
-        ['test2',testData.test2,["work"]],
-        ['test3',testData.test3, []],
-        ['test4',testData.test4, []],
+        [testData.test2,["work"]],
+        [testData.test3, []],
+        [testData.test4, []],
     ];
 
     test.each(testValues)('testing...', (a, expected) => {
