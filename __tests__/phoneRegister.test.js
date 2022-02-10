@@ -160,4 +160,13 @@ describe('testing method getPersonsNumbersByType(firstname, lastname,type)', () 
         .toThrow('missing parameter');
       });
     });
+}); //end of getPersonsNumbersByType tests
+
+describe('testing method getAllNumbersByType(type)', () => {
+  const register = new PhoneRegister(phones);
+
+  test ('test 1: getAllNumbersByType with types home, cell and work', () => {
+    expect(register.getPersonsNumbersByType('Sheldon', 'Cooper', 'work'))
+    .toEqual(["747347767", "747983312"]);
+  });
 });
