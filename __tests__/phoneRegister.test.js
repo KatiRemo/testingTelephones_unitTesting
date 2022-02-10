@@ -103,20 +103,61 @@ describe('testing method getTypes test.each version', () => {
           expect(register.getTypes()).toEqual(["home"]); 
     });
 
-    const testValues = [
-        //a             expected
-        [testData.test2,["work"]],
-        [testData.test3, []],
-        [testData.test4, []],
-    ];
+    // const testValues = [
+    //     //a             expected
+    //     [testData.test2,["work"]],
+    //     [testData.test3, []],
+    //     [testData.test4, []],
+    // ];
 
-    test.each(testValues)('testing...', (a, expected) => {
-        const register = new PhoneRegister(a);
-        expect(register.getTypes()).toEqual(expected);
-    })
+    // test.each(testValues)('testing...', (a, expected) => {
+    //     const register = new PhoneRegister(a);
+    //     expect(register.getTypes()).toEqual(expected);
+    // });
 
     // test.each(testValues)('testing %s', (text, a, expected) => {
     //     const register = new PhoneRegister(a);
     //     expect(register.getTypes()).toEqual(expected); 
     // });
+  });
+
+describe('testing method getPersonsNumbersByType(firstname, lastname,type)', () => {
+  const register = new PhoneRegister(phones);
+
+  test ('test 1: get with parameters Sheldon, Cooper, work', () => {
+    expect(register.getPersonsNumbersByType('Sheldon', 'Cooper', 'work'))
+    .toEqual(["747347767", "747983312"]);
+  });
+
+  describe('Tests 2-4: getPersonsNumbersByType', () => {
+    const testValues = [
+      //firstname, lastname, type, expected
+      ['Sheldon', 'Cooper', 'cell', ["019487481"]],
+      ['Sheldon', 'Cooper', 'home', ["818979934"]],
+      ['Sheldon', 'Cooper', 'x', []],
+      ['Sheldon', 'x', 'cell', []],
+      ['x', 'Cooper', 'cell', []],
+      ['x', 'y', 'z', []]
+    ];
+    test.each(testValues)('getPersonsNumbersByType("%s","%s","%s") returns %s',
+    (firstname, lastname, type, expected) => {
+      expect(register.getPersonsNumbersByType(firstname, lastname, type))
+      .toEqual(expected);
+    });
+  });
+
+  describe('Test 5: missing parameter throws an exception', () => {
+      test('one parameter missing', () => {
+        expect(() => register.getPersonsNumbersByType('Sheldon', 'Cooper'))
+        .toThrow('missing parameter');
+      });
+      test('two parameters missing', () => {
+        expect(() => register.getPersonsNumbersByType('Sheldon'))
+        .toThrow('missing parameter');
+      });
+      test('all parameters missing', () => {
+        expect(() => register.getPersonsNumbersByType())
+        .toThrow('missing parameter');
+      });
+    });
 });

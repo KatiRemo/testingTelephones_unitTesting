@@ -58,3 +58,24 @@ returns
 ```json
 []
 ```
+
+## Test 4: wrong type or name returns an empty array
+
+```js
+register.getPersonsNumbersByType("Sheldon", "Cooper", "x");
+register.getPersonsNumbersByType("Sheldon", "x", "cell");
+register.getPersonsNumbersByType("x", "Cooper", "cell");
+register.getPersonsNumbersByType("x", "y", "z");
+```
+
+returns []
+
+## Test 5: missing parameter throws an exception
+
+```js
+register.getPersonsNumbersByType("Sheldon", "Cooper");
+register.getPersonsNumbersByType("Sheldon");
+register.getPersonsNumbersByType();
+```
+
+Throws an expection `'missing parameter'`
