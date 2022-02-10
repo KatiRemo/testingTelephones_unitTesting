@@ -165,8 +165,40 @@ describe('testing method getPersonsNumbersByType(firstname, lastname,type)', () 
 describe('testing method getAllNumbersByType(type)', () => {
   const register = new PhoneRegister(phones);
 
-  test ('test 1: getAllNumbersByType with types home, cell and work', () => {
-    expect(register.getPersonsNumbersByType('Sheldon', 'Cooper', 'work'))
-    .toEqual(["747347767", "747983312"]);
-  });
-});
+  describe('test 1: testing individually', () => {
+    test('type home returns first phones of the phones array', () => {
+      const expected = [
+        { "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "home", "tel": "818979934" } },
+        {  "firstname": "Leonard", "lastname": "Hofstadter", "number": { "type": "home", "tel": "824684920"} }
+      ];
+      expect(register.getAllNumbersByType('home')).toEqual(expected);
+    });
+  
+    test('type cell returns two objects in the array', () => {
+      expect(register.getAllNumbersByType('cell')).toEqual([
+        { "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "cell", "tel":"019487481"}},
+        {  "firstname": "Leonard","lastname": "Hofstadter","number": { "type": "cell", "tel":"084928482"}}
+      ]);
+    });
+
+    test('type work returns last and other items in the phones array', () => {
+      const expected = [
+        {"firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"818979934"}},
+        {  "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"747347767"}},
+        {  "firstname": "Leonard","lastname": "Hofstadter","number": { "type": "work", "tel":"747678301"}}
+      ];
+      expect(register.getAllNumbersByType('work')).toEqual(expected);
+    });
+
+    test('if type does not exist returns an empty array', () => {
+      expect(register.getAllNumbersByType('x')).toEqual([]);
+    });
+  }); //end of test 1: testing individually
+
+  describe('Test 2: if type is missing throws an exception', () => {
+    test('missing type throws an expection', () => {
+      expect(() => register.getAllNumbersByType()).toThrow('missing parameter');
+    });
+  }); //end of test 2
+
+}); //ending all getAllNumbersByType tests

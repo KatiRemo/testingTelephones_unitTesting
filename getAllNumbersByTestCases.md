@@ -70,7 +70,7 @@ register.getAllNumbersByType();
 
 throws an expection `¨missing parameter'`
 
-### Test 3: if type doesn't exist returns an empty array
+### Test 3: if type does not exist returns an empty array
 ```js
 register.getAllNumbersByType('x');
 ```
