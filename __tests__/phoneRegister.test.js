@@ -230,3 +230,44 @@ describe('testing method getAllNumbersByType(type)', () => {
   })
 
 }); //ending all getAllNumbersByType tests
+
+describe('testing method getAllNumbers', () => {
+  test('Test 1: test with default data', () => {
+    const register = new PhoneRegister(phones);
+    expect(register.getAllNumbers()).toEqual(phones);
+  });
+
+  test('Test 2: test some phones missing', () => {
+    const testData = [
+      {
+        "firstname": "Sheldon",
+        "lastname": "Cooper",
+        "phones": []
+      },
+      {
+        "firstname": "Leonard",
+        "lastname": "Hofstadter",
+        "phones": [
+          { "type": "home", "number": "824684920" },
+          { "type": "work", "number": "747678301" },
+          { "type": "cell", "number": "084928482" }
+        ]
+      }
+    ];
+    const expectedResult = [
+      {
+        "firstname": "Leonard",
+        "lastname": "Hofstadter",
+        "phones": [
+          { "type": "home", "number": "824684920" },
+          { "type": "work", "number": "747678301" },
+          { "type": "cell", "number": "084928482" }
+        ]
+      }
+    ];
+    const register = new PhoneRegister(testData);
+    expect(register.getAllNumbers()).toEqual(expectedResult);
+  });
+
+
+}); //end of getAllNumbers
