@@ -183,8 +183,8 @@ describe('testing method getAllNumbersByType(type)', () => {
 
     test('type work returns last and other items in the phones array', () => {
       const expected = [
-        {"firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"818979934"}},
-        {  "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"747347767"}},
+        {"firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"747347767"}},
+        {  "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"747983312"}},
         {  "firstname": "Leonard","lastname": "Hofstadter","number": { "type": "work", "tel":"747678301"}}
       ];
       expect(register.getAllNumbersByType('work')).toEqual(expected);
@@ -200,5 +200,33 @@ describe('testing method getAllNumbersByType(type)', () => {
       expect(() => register.getAllNumbersByType()).toThrow('missing parameter');
     });
   }); //end of test 2
+
+  describe('Test 3: testing with test.each', () => {
+    const expectedHome = [
+      { "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "home", "tel": "818979934" } },
+      {  "firstname": "Leonard", "lastname": "Hofstadter", "number": { "type": "home", "tel": "824684920"} }
+    ];
+
+    const expectedCell = [
+      { "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "cell", "tel":"019487481"}},
+      {  "firstname": "Leonard","lastname": "Hofstadter","number": { "type": "cell", "tel":"084928482"}}
+    ];
+
+    const expectedWork = [
+      {"firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"747347767"}},
+      {  "firstname": "Sheldon", "lastname": "Cooper", "number": { "type": "work", "tel":"747983312"}},
+      {  "firstname": "Leonard","lastname": "Hofstadter","number": { "type": "work", "tel":"747678301"}}
+    ];
+    const testValues = [
+      ['home', expectedHome],
+      ['cell', expectedCell],
+      ['work', expectedWork],
+      ['x', []]
+    ];
+
+    test.each(testValues)('testing getAllNumbersByType("%s")', (type, expected) => {
+      expect(register.getAllNumbersByType(type)).toEqual(expected);
+    })
+  })
 
 }); //ending all getAllNumbersByType tests
