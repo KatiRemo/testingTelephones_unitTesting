@@ -54,3 +54,13 @@ register.getName();
 ```
 
 returns `null`
+
+### Test 5: Wrong type
+
+Call
+
+```js
+register.getName(1234);
+```
+
+returns `null`

@@ -290,5 +290,35 @@ describe('testing method getAllNumbers', () => {
     const register = new PhoneRegister([]);
     expect(register.getAllNumbers()).toEqual([]);
   });
-
 }); //end of getAllNumbers
+
+describe('testing method getName', () => {
+  const register = new PhoneRegister(phones);
+
+  test('Test 1: Get name for the number "019487481" ', () => {
+    expect(register.getName('019487481')).toEqual({"firstname": "Sheldon", "lastname": "Cooper"});
+  });
+
+  describe('Test 2: Get names by number from default data', () => {
+    const testValues = [
+      ["818979934", { firstname: "Sheldon", lastname: "Cooper" }],
+      ["084928482", { firstname: "Leonard", lastname: "Hofstadter" }],
+      ["824684920", { firstname: "Leonard", lastname: "Hofstadter" }],
+    ];
+    test.each(testValues)('number %s returns %p', (number, expectedValue) => {
+      expect(register.getName(number)).toEqual(expectedValue);
+    });
+  });
+
+  test('Test 3: Wrong number', () => {
+    expect(register.getName('01010101')).toBeNull();
+  });
+
+  test('Test 4: Parameter missing', () => {
+    expect(register.getName()).toBeNull();
+  });
+
+  test('Test 5: Wrong type', () => {
+    expect(register.getName(1234)).toBeNull();
+  });
+}); //end of getName
