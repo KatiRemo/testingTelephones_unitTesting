@@ -269,5 +269,26 @@ describe('testing method getAllNumbers', () => {
     expect(register.getAllNumbers()).toEqual(expectedResult);
   });
 
+  test('Test 3: Test all phones missing or phone fields missing', () => {
+    const testData = [
+      {
+        "firstname": "Sheldon",
+        "lastname": "Cooper",
+        "phones": []
+      },
+      {
+        "firstname": "Leonard",
+        "lastname": "Hofstadter"
+      }
+    ];
+
+    const register = new PhoneRegister(testData);
+    expect(register.getAllNumbers()).toEqual([]);
+  });
+
+  test('Test 4: Test all persons are missing', () => {
+    const register = new PhoneRegister([]);
+    expect(register.getAllNumbers()).toEqual([]);
+  });
 
 }); //end of getAllNumbers

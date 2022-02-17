@@ -62,8 +62,15 @@ module.exports = class PhoneRegister {
                 }
             return found;
         } // end of getAllNumbersType
+    
+    getAllNumbers() {
 
-
-
-        
+        const found = [];
+            for(let person of this.phoneRegister) {
+                    if(person.phones && person.phones.length>0) {
+                        found.push(person);
+                    }
+                }
+           return found;
+    } //end of getAllNumbers
  } //end of class
